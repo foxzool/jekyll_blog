@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Just ZoOL</title>
-  <meta name="description" content="my blog for share">
+  <title>使用Annotate为rails项目生成model的大纲</title>
+  <meta name="description" content="github地址">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://zool.me/">
+  <link rel="canonical" href="http://zool.me/rails/2010/12/18/Annotate-the-rails-using-the-model-generated-the-outline-of-the-project/">
   <link rel="alternate" type="application/rss+xml" title="Just ZoOL" href="http://zool.me/feed.xml" />
 </head>
 
@@ -70,67 +70,61 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">使用Annotate为rails项目生成model的大纲</h1>
+    <p class="post-meta">Dec 18, 2010</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Jan 9, 2015</span>
+  <article class="post-content">
+    <p><a href="https://github.com/ctran/annotate_models">github地址</a></p>
 
-        <h2>
-          <a class="post-link" href="/ruby/2015/01/09/Octal-in-ruby/">ruby 中的八进制</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 18, 2014</span>
+<p>有时候在写代码时，想不起来当前model的字段属性了，annotate帮你忙。</p>
 
-        <h2>
-          <a class="post-link" href="/rails/2014/08/18/how-to-url-helpers-in-model/">如何在model中使用url_helpers</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 14, 2014</span>
+<p>annotate可以以注释的方式在你model文件的底部生成model的大纲(schema)信息</p>
 
-        <h2>
-          <a class="post-link" href="/rails/2014/08/14/how-to-auto-hidden-flash-messages-in-rails/">“如何在rails中自动隐藏flash message消息”</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 12, 2014</span>
+<h1>安装</h1>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install annotate
+</code></pre></div>
+<h1>生成</h1>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /path/to/app/
+annotate
+</code></pre></div>
+<p>便会生成下面的注释</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># == Schema Information</span>
+<span class="c1">#</span>
+<span class="c1"># Table name: users</span>
+<span class="c1">#</span>
+<span class="c1">#  id                   :integer(4)      not null, primary key</span>
+<span class="c1">#  email                :string(255)     default(&quot;&quot;), not null</span>
+<span class="c1">#  encrypted_password   :string(128)     default(&quot;&quot;), not null</span>
+<span class="c1">#  username             :string(255)     not null</span>
+<span class="c1">#  reset_password_token :string(255)</span>
+<span class="c1">#  remember_created_at  :datetime</span>
+<span class="c1">#  sign_in_count        :integer(4)      default(0)</span>
+<span class="c1">#  current_sign_in_at   :datetime</span>
+<span class="c1">#  last_sign_in_at      :datetime</span>
+<span class="c1">#  current_sign_in_ip   :string(255)</span>
+<span class="c1">#  last_sign_in_ip      :string(255)</span>
+<span class="c1">#  password_salt        :string(255)</span>
+</code></pre></div>
+  </article>
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'zoolblog'; // required: replace example with your forum shortname
 
-        <h2>
-          <a class="post-link" href="/rails/2014/08/12/how-to-use-hstore-in-rails/">“如何在rails中使用hstore模块”</a>
-        </h2>
-      </li>
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
-      <li>
-        <span class="post-meta">Aug 11, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/rails/2014/08/11/how-to-add-unique-in-HABTM/">“如何在HABTM中添加唯一认证”</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <!-- Pagination links -->
-  <div class="pagination">
-    
-      <span class="previous">Previous</span>
-    
-    <span class="page_number ">Page: 1 of 11</span>
-    
-      <a href="/page2" class="next">Next</a>
-    
-  </div>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
 </div>
 
       </div>

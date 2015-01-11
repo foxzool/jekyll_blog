@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Just ZoOL</title>
-  <meta name="description" content="my blog for share">
+  <title>完美解决rails中国时区时间设置</title>
+  <meta name="description" content="解释4个时区设置的不同">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://zool.me/">
+  <link rel="canonical" href="http://zool.me/rails/2010/12/17/Perfect-solution-to-China-time-zone-setting-rails/">
   <link rel="alternate" type="application/rss+xml" title="Just ZoOL" href="http://zool.me/feed.xml" />
 </head>
 
@@ -70,67 +70,84 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">完美解决rails中国时区时间设置</h1>
+    <p class="post-meta">Dec 17, 2010</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Jan 9, 2015</span>
+  <article class="post-content">
+    <h2>解释4个时区设置的不同</h2>
 
-        <h2>
-          <a class="post-link" href="/ruby/2015/01/09/Octal-in-ruby/">ruby 中的八进制</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 18, 2014</span>
+<ul>
+<li><p>config.active<em>record.default</em>timezone</p></li>
+<li><p>config.time_zone </p></li>
+<li><p>Time.zone</p></li>
+<li><p>ENV[&#39;TZ&#39;]</p></li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/rails/2014/08/18/how-to-url-helpers-in-model/">如何在model中使用url_helpers</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 14, 2014</span>
+<p>分别解释如下:</p>
 
-        <h2>
-          <a class="post-link" href="/rails/2014/08/14/how-to-auto-hidden-flash-messages-in-rails/">“如何在rails中自动隐藏flash message消息”</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 12, 2014</span>
+<ol>
+<li>ENV[&#39;TZ&#39;]</li>
+</ol>
 
-        <h2>
-          <a class="post-link" href="/rails/2014/08/12/how-to-use-hstore-in-rails/">“如何在rails中使用hstore模块”</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 11, 2014</span>
+<p>这个变量指的是服务器系统变量，ubuntu下可以用cat /etc/timezone来查看</p>
 
-        <h2>
-          <a class="post-link" href="/rails/2014/08/11/how-to-add-unique-in-HABTM/">“如何在HABTM中添加唯一认证”</a>
-        </h2>
-      </li>
-    
-  </ul>
+<p>当这个值为 Asia/Shanghai时， 显示就是中国时间。  </p>
 
-  <!-- Pagination links -->
-  <div class="pagination">
-    
-      <span class="previous">Previous</span>
-    
-    <span class="page_number ">Page: 1 of 11</span>
-    
-      <a href="/page2" class="next">Next</a>
-    
-  </div>
+<p>对于ruby/rails来说，这个值决定 Time.now的显示时间</p>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<ol>
+<li>config.time_zone</li>
+</ol>
 
+<p>这个值是rails系统对显示时间的默认设置，可以通过 rake time:zones:all 列出所有可以设置的时区</p>
+
+<p>一般来说把这个设置为 &#39;Beijing&#39;</p>
+
+<ol>
+<li>Time.zone</li>
+</ol>
+
+<p>这个是设置最终处理显示的时区，可以覆盖config.time<em>zone,参数和config.time</em>zone一样</p>
+
+<p>可以参考 railscasts的这篇 <a href="http://railscasts.com/episodes/106-time-zones-in-rails-2-1">Time Zones in Rails 2.1</a></p>
+
+<ol>
+<li>config.active<em>record.default</em>timezone</li>
+</ol>
+
+<p><strong>这里就是全文的关键了！</strong></p>
+
+<p>这个default<em>timezone是决定active</em>record对数据库交互的时区设置，也就是影响created<em>at和updated</em>at在数据库的记录时间。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">只有两个参数:utc和:local, rails初始化时默认是utc，所以保存到数据库的时间是utc时间。
+</code></pre></div>
+<h2>总结</h2>
+
+<p>要在界面和数据库都很好的显示处理中国时区时间，编辑/path/to/site/config/application.rb(rails2是environment.rb), 加入</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="n">config</span><span class="o">.</span><span class="n">active_record</span><span class="o">.</span><span class="n">default_timezone</span> <span class="o">=</span> <span class="ss">:local</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">time_zone</span> <span class="o">=</span> <span class="s1">&#39;Beijing&#39;</span>
+</code></pre></div>
+<p>完美解决rails中国时区时间设置</p>
+
+  </article>
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'zoolblog'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
 </div>
 
       </div>

@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Just ZoOL</title>
-  <meta name="description" content="my blog for share">
+  <title>建立sproutcore应用</title>
+  <meta name="description" content="sproutcore是通过rubygems来安装的">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://zool.me/">
+  <link rel="canonical" href="http://zool.me/ruby/2011/02/22/Application-to-establish-sproutcore/">
   <link rel="alternate" type="application/rss+xml" title="Just ZoOL" href="http://zool.me/feed.xml" />
 </head>
 
@@ -70,67 +70,42 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">建立sproutcore应用</h1>
+    <p class="post-meta">Feb 22, 2011</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Jan 9, 2015</span>
+  <article class="post-content">
+    <p>sproutcore是通过rubygems来安装的</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install sproutcore
+</code></pre></div>
+<p>建立应用</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sc-init HelloWorld
+</code></pre></div>
+<p>启动应用</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>HelloWorld
+sc-server
+</code></pre></div>
+<p>便会通过启动thin在locahost:4020提供应用服务</p>
 
-        <h2>
-          <a class="post-link" href="/ruby/2015/01/09/Octal-in-ruby/">ruby 中的八进制</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 18, 2014</span>
+  </article>
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'zoolblog'; // required: replace example with your forum shortname
 
-        <h2>
-          <a class="post-link" href="/rails/2014/08/18/how-to-url-helpers-in-model/">如何在model中使用url_helpers</a>
-        </h2>
-      </li>
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
-      <li>
-        <span class="post-meta">Aug 14, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/rails/2014/08/14/how-to-auto-hidden-flash-messages-in-rails/">“如何在rails中自动隐藏flash message消息”</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 12, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/rails/2014/08/12/how-to-use-hstore-in-rails/">“如何在rails中使用hstore模块”</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 11, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/rails/2014/08/11/how-to-add-unique-in-HABTM/">“如何在HABTM中添加唯一认证”</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <!-- Pagination links -->
-  <div class="pagination">
-    
-      <span class="previous">Previous</span>
-    
-    <span class="page_number ">Page: 1 of 11</span>
-    
-      <a href="/page2" class="next">Next</a>
-    
-  </div>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
 </div>
 
       </div>
