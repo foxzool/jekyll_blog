@@ -8,7 +8,6 @@ task :deploy do
   # system "grunt build"
 
   cd "_site" do
-    system 'pwd'
     system 'git status'
     system "git add -A"
 
