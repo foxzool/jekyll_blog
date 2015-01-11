@@ -3,7 +3,7 @@ title: Just ZoOL
 email: zhooul@gmail.com
 description: my blog for share
 baseurl: ""
-url: "http://zool.me"
+url: "http://foxzool.github.io"
 twitter_username: foxzool
 github_username: foxzool
 
@@ -13,10 +13,17 @@ permalink: pretty
 
 paginate: 5
 
-github: [Repository metadata]
+# github: [Repository metadata]
 
 gems:
-    - jekyll-sitemap
+   - jekyll-sitemap
 
-tag_page_layout: tag_page
-tag_page_dir: tag
+# tag_page_layout: tag_page
+# tag_page_dir: tag
+
+include:
+  - .nojekyll
+
+exclude:
+  - "bower_components"
+  - "bower.json"
